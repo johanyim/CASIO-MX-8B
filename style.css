@@ -1,15 +1,29 @@
+:root {
+    --primary-light: #d7d7d7;
+    --primary-dark: #333;
+    --secondary-light: #fefefe;
+    --hover-color: black; 
+}
+  
+
+
+@font-face {
+    font-family: CasioFont;
+    src: url(./fonts/eurostile_extended_black.ttf);
+}
+
 .case {
     margin: auto;
-    padding: 2%;
+    padding: 2% 1%  ;
     box-sizing: border-box;
 
     display: flex;
     flex-direction: column;
     border: 1px solid black;
-    border-radius: 5vh;
+    border-radius: 3vh;
     max-width: 90vh;
     max-height: 90vh;
-    background-color: grey;
+    background-color: var(--primary-light);
     aspect-ratio: 10/14.5;
     
 }
@@ -17,3 +31,31 @@
 header {
     display: flex;
 }
+
+
+.casio {
+    width: 30%;
+    font-family: CasioFont;
+    font-size: 1.5em;
+    text-align: center;
+}
+
+.panel {
+    width: 40%;
+    background-color: #220000;
+    height: 150%;
+    margin-top: -2%;
+    border-radius: 5px;
+}
+
+
+.model {
+    width: 30%;
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 1em;
+    text-align: center;
+    margin: auto;
+}
+
+
+
