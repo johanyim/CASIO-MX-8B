@@ -1,7 +1,8 @@
 :root {
     --primary-light: #f1f1f1;
-    --primary-dark: #333;
-    --secondary-light: #fefefe;
+    --primary-dark: #8D816B;
+    --secondary-light: #D6CDC6;
+    --tertiary-color: #B96040; 
     --hover-color: black; 
 }
   
@@ -12,50 +13,144 @@
     src: url(./fonts/eurostile_extended_black.ttf);
 }
 
+@font-face {
+    font-family: SevSeg;
+    src: url(./fonts/Segment7Standard.otf);
+}
+
+
 .case {
     margin: auto;
-    padding: 2% 1%  ;
+    padding: 20px;
     box-sizing: border-box;
 
     display: flex;
     flex-direction: column;
+    gap: 4%;
+
     border: 1px solid black;
     border-radius: 3vh;
     max-width: 90vh;
     max-height: 90vh;
     background-color: var(--primary-light);
     aspect-ratio: 10/14.5;
+    align-items: center;
     
 }
 
 header {
-    display: flex;
+    flex: 1;
+    width: 100%;
+    display: flex;  
+    align-items: center;
+    justify-content: flex-end;
+    /* height: 7%;
+    margin: 0%; */
 }
 
 
 .casio {
-    width: 30%;
+    flex: 3; 
     font-family: CasioFont;
-    font-size: 1.5em;
+    font-size: 1.3rem;
     text-align: center;
 }
 
 .panel {
-    width: 40%;
+    /* flex-grow: 4; */
+    flex: 4;
+    
     background-color: #220000;
     height: 150%;
-    margin-top: -2%;
+    width: 40%;
+    /* margin-top: -2%; */
     border-radius: 5px;
 }
 
 
 .model {
-    width: 30%;
+    flex: 3 3 0; 
+    /* width: 30%; */
     font-family: Arial, Helvetica, sans-serif;
-    font-size: 1em;
+    font-size: 0.8rem;
     text-align: center;
     margin: auto;
 }
 
 
+.screen {
+    /* shape */
+    flex: 2 0 auto;
+    width: 90%;
+    border-radius: 0.5rem;
+    /* height: 15%; */
+
+    /* color */
+    background-color: #6E7269;
+
+    /* position */
+    margin: 10px auto;
+
+
+}   
+
+
+.screentext {
+    /* font */
+    font-family: SevSeg;
+    font-size: 4.5rem;
+    transform: scale(1,1.6);
+    transform-origin: top left;
+}
+
+
+.buttons{
+    flex: 8 0 auto;
+    display: flex;
+    gap: 4%;
+    margin: auto;
+    width: 100%;
+}
+
+.column {
+    display: flex;
+    flex: 1;    
+    flex-direction: column;
+    /* gap: 20px;  */
+    justify-content: flex-end;
+}
+
+
+button {
+    font-size: large;
+    background-color: var(--primary-light);
+    flex: 1;
+    /* height: 60px; */
+    height: 30px;
+    border-radius: 10px;
+    margin: 15% 0;
+}
+
+.short {
+    flex: 0 0 auto;
+}
+
+.tall {
+    flex: 2 0 30px;
+    height: 140px;
+}
+
+.space {
+    flex: 1;
+}
+
+
+.red {
+    background-color: var(--tertiary-color)
+}
+
+
+.grey {
+    background-color: var(--primary-dark);
+}
 
