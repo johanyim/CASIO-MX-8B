@@ -78,7 +78,7 @@ header {
 }
 
 
-.screen {
+#screen {
     /* shape */
     flex: 2 0 auto;
     width: 90%;
@@ -95,7 +95,7 @@ header {
 }   
 
 
-.screentext {
+#screentext {
     /* font */
     font-family: SevSeg;
     font-size: 4.5rem;
