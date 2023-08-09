@@ -53,11 +53,10 @@ function enterDigit(d_str) {
     
 }
 
-
+//digits
 Array.from(digits).forEach(digit => {
     digit.addEventListener('click', () =>{
-        enterDigit(digit.id)
-        // alert(digit.id)
+        enterDigit(digit.id[1])
         display();
     })
 });
@@ -83,4 +82,5 @@ document.getElementById("point").addEventListener('click', ()=> {
 
 
 
+currentNumber = 3.1415
 display()
