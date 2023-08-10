@@ -11,98 +11,48 @@ let workingNumber = 0;
 let currentNumber = 0;
 let decimalMode = false;
 let decimalPlaces = 0;
+let isZero = true
+let isPositive = true;
+let displayNumber = "0."
+let displayText = "&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp0."
 
-// let displayNumber = "0."
-let displayText = "&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp0"
 
 
 
-//current number gets displayed to the screen
 function display() {
+    if(isPositive){ displayText = "&nbsp"}
+    else{           displayText = "-"}
 
-    displayText = getDigits();
-    n = getDigitCount();
-    dp = decimalPlaces;
-
-
-
-    
-    
-
-    //number of whitespaces
-    for (let d = n; d < MAX_DIGITS - 1; d++) {
-        displayText = "&nbsp" + displayText
+    for(i = displayNumber.length; i < MAX_DIGITS; i++){
+        displayText = displayText + "&nbsp"
     }
 
-    //whether to add '-' or not
-    if (currentNumber < 0) {
-        displayText = "-" + displayText
-    } else {
-        displayText = "&nbsp" + displayText
-    }
-
-
-    // // where to put the decimal place
-    // position = displayText.length-dp
-    // displayText = [
-    //     displayText.slice(0,position), ".", displayText.slice(position)
-    // ].join('');
-
+    displayText = displayText +  displayNumber
+    
     screentext.innerHTML = displayText;
-    console.log("Display:" + currentNumber)
 }
 
-//gets the number of digits (excluding '-') that should be displayed 
-function getDigitCount() {
-    return getDigits().length + decimalPlaces
-}
 
-//raw digits 
-function getDigits() {
-    let num = Math.abs(currentNumber)
-
-
-    //special behavior when 0
-    if(num === 0){
-        ret = "0"
-        for(let i = 0; i < decimalPlaces; i++){
-            ret = ret + "0" 
-        }
-        return ret
-    }
-    //special behavior when decimal part is all zero
-    if(num%1 == 0) {
-        ret = (currentNumber%1).toString()
-        for(let i = 0; i < decimalPlaces; i++){
-            ret = ret + "0" 
-        }
-        return ret
-    }
-
-    return num.toString().replace('.','')
-}
-
-function enterDigit(d_str) {
+function enterDigit(d) {
     //maximum of 8 digits on screen
-    if (getDigitCount() + 1 >= MAX_DIGITS) {
+    if (displayNumber.length >= MAX_DIGITS) {
         return
     }
 
-    d = parseInt(d_str)
     if (!decimalMode) {
-        currentNumber = 10 * currentNumber + d;
+        displayNumber = displayNumber.slice(0,-1) + d + '.'
     } else {
-        let shift = 10 ** (decimalPlaces + 1)
-        // currentNumber = currentNumber + (0.1**decimalPlaces)*d 
-        currentNumber = (((currentNumber * shift) + d) / shift)
-        decimalPlaces++;
-        currentNumber = currentNumber.toFixed(decimalPlaces);
-        console.log("enterDigit:" + currentNumber)
+        displayNumber = displayNumber + d
+    }
+
+    if(isZero){
+        displayNumber = d + "."
+        isZero = false
+        //intentional (bug in CASIO?)
+        isPositive = true
     }
 
     display();
-
-
 }
 
 //digits
@@ -126,14 +76,18 @@ document.getElementById("ac").addEventListener('click', () => {
     currentNumber = 0;
     decimalMode = false;
     decimalPlaces = 0;
-    displayText = ZERO;
+    isZero = true
+    isPositive = true;
+    displayNumber = "0."
+    displayText = "&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp0"
+
     display();
 })
 
 
 // +/-
 document.getElementById("sign").addEventListener('click', () => {
-    currentNumber = -currentNumber;
+    isPositive = !isPositive
     display();
 })
 
