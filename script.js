@@ -1,3 +1,4 @@
+//strings
 const digits = document.getElementsByClassName("digit");
 const screen = document.getElementById("screentext")
 const ZERO = "&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp0"
