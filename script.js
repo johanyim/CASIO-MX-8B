@@ -17,28 +17,21 @@ let isPositive = true;
 let displayNumber = "0."
 let displayText = "&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp0."
 
-
-
-
 function display() {
-    if(isPositive){ displayText = "&nbsp"}
-    else{           displayText = "-"}
+    if(isPositive) displayText = "&nbsp"
+    else           displayText = "-"
 
     for(i = displayNumber.length; i < MAX_DIGITS; i++){
         displayText = displayText + "&nbsp"
     }
 
-    displayText = displayText +  displayNumber
-    
+    displayText = displayText +  displayNumber    
     screentext.innerHTML = displayText;
 }
 
-
 function enterDigit(d) {
     //maximum of 8 digits on screen
-    if (displayNumber.length >= MAX_DIGITS) {
-        return
-    }
+    if (displayNumber.length >= MAX_DIGITS) return
 
     if (!decimalMode) {
         displayNumber = displayNumber.slice(0,-1) + d + '.'
@@ -46,11 +39,18 @@ function enterDigit(d) {
         displayNumber = displayNumber + d
     }
 
+    // first number being entered
     if(isZero){
+        if(d === "0"){
+            isZero = true
+            //intentional (bug in CASIO MX-8B?)
+        }else{
+            isZero = false
+            //intentional (bug in CASIO MX-8B?)
+        }
         displayNumber = d + "."
-        isZero = false
-        //intentional (bug in CASIO?)
         isPositive = true
+        
     }
 
     display();
@@ -68,6 +68,7 @@ Array.from(digits).forEach(digit => {
 //decimal point
 document.getElementById("point").addEventListener('click', () => {
     decimalMode = true;
+    isZero = false;
     display();
 })
 
@@ -80,25 +81,20 @@ document.getElementById("ac").addEventListener('click', () => {
     isZero = true
     isPositive = true;
     displayNumber = "0."
-    displayText = "&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp0"
-
     display();
 })
-
 
 // +/-
 document.getElementById("sign").addEventListener('click', () => {
-    isPositive = !isPositive
+    isPositive = !isPositive;
+    iszero = false;
     display();
 })
-
 
 // decimal point
 document.getElementById("point").addEventListener('click', () => {
     decimalMode = true;
 })
-
-
 
 // currentNumber = 3.1415
 display()
