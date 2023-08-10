@@ -6,16 +6,15 @@ const MIN = -99999999;
 const MAX = 99999999;
 const MAX_DIGITS = 9;
 
-
-//TODO: Try with all string values, only calculating when using function buttons
-let workingNumber = 0;
+let workingNumber = null;
 let currentNumber = 0;
 let decimalMode = false;
 let decimalPlaces = 0;
 let isZero = true
 let isPositive = true;
 let displayNumber = "0."
-let displayText = "&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp0."
+let operation = "none"
+
 
 function display() {
     if(isPositive) displayText = "&nbsp"
@@ -74,14 +73,14 @@ document.getElementById("point").addEventListener('click', () => {
 
 // C/AC
 document.getElementById("ac").addEventListener('click', () => {
-    workingNumber = 0;
+    workingNumber = null;
     currentNumber = 0;
     decimalMode = false;
     decimalPlaces = 0;
     isZero = true
     isPositive = true;
     displayNumber = "0."
-    display();
+    operation = "none"
 })
 
 // +/-
@@ -90,6 +89,36 @@ document.getElementById("sign").addEventListener('click', () => {
     iszero = false;
     display();
 })
+
+
+//operations
+document.getElementById("divide").addEventListener('click', () => {
+    operation="divide"
+})  
+document.getElementById("times").addEventListener('click', () => {
+    operation="times"
+})
+document.getElementById("minus").addEventListener('click', () => {
+    operation="minus"
+})
+document.getElementById("plus").addEventListener('click', () => {
+    operation="plus"
+})
+
+
+
+document.getElementById("equals").addEventListener('click', () => {
+    equate()
+    console.log(operation)
+})
+
+
+function equate() {
+    return
+}
+
+
+
 
 // decimal point
 document.getElementById("point").addEventListener('click', () => {
