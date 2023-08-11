@@ -110,7 +110,7 @@ button {
 }
 
 .buttons{
-    flex: 10 0 auto;
+    flex: 4 0 auto;
     width: 95%;
     display: grid;
 
@@ -180,7 +180,8 @@ button {
 
 
 .red {
-    background-color: var(--tertiary-color)
+    background-color: var(--tertiary-color);
+    color: var(--primary-light)
 }
 
 
