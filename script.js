@@ -95,7 +95,6 @@ document.getElementById("point").addEventListener('click', () => {
 })
 
 // C/AC
-
 function clear(){
     temporary = true;
     isPositive = true;
